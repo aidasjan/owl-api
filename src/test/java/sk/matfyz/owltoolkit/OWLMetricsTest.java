@@ -1,0 +1,21 @@
+package sk.matfyz.owltoolkit;
+
+import java.io.IOException;
+import sk.matfyz.owltoolkit.OWLMetrics;
+import org.junit.Test;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+
+import org.junit.Test;
+
+
+public class OWLMetricsTest {
+
+	@Test
+	public void test() throws OWLOntologyCreationException, IOException {
+		//OWLMetrics.main("-v", "src/test/resources/univ-bench.owl");
+		OWLMetrics.main("src/test/resources/pizza.owl");
+		//OWLMetrics.main("test/University0_0.owl");
+		//OWLMetrics.main("-v", "test/LUBM-ex-20.owl");
+	}
+
+}
