@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/matus/ontologies/2023/4/climbing/"
+     xml:base="http://www.semanticweb.org/matus/ontologies/2023/4/climbing/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#hasGrade -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#hasGrade">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Route"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Boulder -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Boulder">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Route"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#FreeSolo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#FreeSolo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Solo"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#RopeSolo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Lead -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Lead">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Route"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#RopeSolo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#RopeSolo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Solo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Route -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Route"/>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Solo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Solo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Route"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#TopRope -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#TopRope">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Route"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#7a -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#7a">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#7b -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#7b">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#7c -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#7c">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#8a -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#8a">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#8b -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#8b">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/matus/ontologies/2023/4/climbing#8c -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#8c">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/matus/ontologies/2023/4/climbing#Grade"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+
