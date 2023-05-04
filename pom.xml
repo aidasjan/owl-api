@@ -85,7 +85,7 @@
           <version>3.0.2</version>
           <configuration>
             <archive>
-              <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+              <manifestFile>src/main/resources/META-INF/manifest.mf</manifestFile>
             </archive>
           </configuration>
         </plugin>
