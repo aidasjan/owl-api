@@ -85,7 +85,9 @@
           <version>3.0.2</version>
           <configuration>
             <archive>
-              <manifestFile>src/main/resources/META-INF/manifest.mf</manifestFile>
+              <manifest>
+                <mainClass>com.owlweb.api.ApiApplication</mainClass>
+              </manifest>
             </archive>
           </configuration>
         </plugin>
