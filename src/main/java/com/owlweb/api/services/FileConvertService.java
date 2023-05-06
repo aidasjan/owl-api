@@ -12,37 +12,36 @@ public class FileConvertService {
 		try {
 
 			String bareFileName = FilenameUtils.removeExtension(sourceFileName);
-			String saveFolder = ""; // FIXME where do we save converted files??
 
 
 			switch (destinationFormat) {
 				case "rdfxml":
-					destinationFileName = saveFolder+bareFileName+".rdf";
-					OWLConverter.main("-rdfxml", sourceFileName, destinationFileName);
+					destinationFileName = bareFileName+".rdf";
+					OWLConverter.main("-rdfxml", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
 					break;
 				case "owlxml":
-					destinationFileName = saveFolder+bareFileName+".owx";
-					OWLConverter.main("-owlxml", sourceFileName, destinationFileName);
+					destinationFileName = bareFileName+".owx";
+					OWLConverter.main("-owlxml", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
 					break;
 				case "turtle":
-					destinationFileName = saveFolder+bareFileName+".ttl";
-					OWLConverter.main("-turtle", sourceFileName, destinationFileName);
+					destinationFileName = bareFileName+".ttl";
+					OWLConverter.main("-turtle", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
 					break;
 				case "manchester":
-					destinationFileName = saveFolder+bareFileName+".omn";
-					OWLConverter.main("-manchester", sourceFileName, destinationFileName);
+					destinationFileName = bareFileName+".omn";
+					OWLConverter.main("-manchester", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
 					break;
 				case "fss":
-					destinationFileName = saveFolder+bareFileName+".ofn";
-					OWLConverter.main("-fss", sourceFileName, destinationFileName);
+					destinationFileName = bareFileName+".ofn";
+					OWLConverter.main("-fss", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
 					break;
 				case "latex":
-					destinationFileName = saveFolder+bareFileName+".tex";
-					OWLConverter.main("-latex", sourceFileName, destinationFileName);
+					destinationFileName = bareFileName+".tex";
+					OWLConverter.main("-latex", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
 					break;
 			}
 		} catch (Exception e) {
-
+			System.out.println("Exception occured during conversion.");
 		}
 
 		// Return converted file name
