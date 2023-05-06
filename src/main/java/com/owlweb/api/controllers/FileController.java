@@ -28,7 +28,8 @@ public class FileController {
     public ResponseEntity<Resource> handleFileUpload(@RequestParam("file") MultipartFile file) {
         storageService.store(file);
 
-        String convertedFileName = this.fileConvertService.convertFile(file.getOriginalFilename(), "rdf");
+        // TODO formats "owlxml" "turtle" "manchester" "fss" "latex"
+        String convertedFileName = this.fileConvertService.convertFile(file.getOriginalFilename(), "rdfxml");
 
         Resource convertedFile = storageService.loadAsResource(convertedFileName);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,

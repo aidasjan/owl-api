@@ -1,5 +1,6 @@
 package sk.matfyz.owltoolkit;
 import java.io.File;
+import java.io.FileOutputStream;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.formats.*;
@@ -12,10 +13,10 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 public class OWLConverter {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String... args) throws Exception {
 
-		if (args.length != 2){
-			System.err.println("Usage: OWLConverter {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input.owl");
+		if (args.length != 3){
+			System.err.println("Usage: OWLConverter {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file");
 			System.exit(0);
 		}
 		
@@ -51,7 +52,9 @@ public class OWLConverter {
 			throw new Exception("Unknown format: " + args[0]);
 		}
 		
-		manager.saveOntology(ontology, format, System.out);
+		FileOutputStream outputFOS = new FileOutputStream(args[2]);
+		manager.saveOntology(ontology, format, outputFOS);
+		outputFOS.close();
 
 	}
 
