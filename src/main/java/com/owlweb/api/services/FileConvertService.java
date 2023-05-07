@@ -41,7 +41,7 @@ public class FileConvertService {
 					break;
 			}
 		} catch (Exception e) {
-			System.out.println("Exception occured during conversion.");
+			System.err.println("Exception occured during conversion.");
 		}
 
 		// Return converted file name

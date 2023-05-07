@@ -9,9 +9,8 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 public class OWLMergerTest {
 
 	@Test
-	public void test() throws OWLOntologyCreationException,
-			OWLOntologyStorageException, FileNotFoundException {
-		OWLMerger.main("src/test/resources/academy.owx", "src/test/resources/climbing.rdf");
+	public void test() throws Exception {
+		OWLMerger.main("uploads/merged.owl", "src/test/resources/academy.owx", "src/test/resources/climbing.rdf");
 	}
 
 }
