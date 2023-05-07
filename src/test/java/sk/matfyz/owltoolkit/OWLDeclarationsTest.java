@@ -10,8 +10,8 @@ import java.io.IOException;
 public class OWLDeclarationsTest {
 
 	@Test
-	public void test() throws OWLOntologyCreationException, IOException, OWLOntologyStorageException {
-		OWLDeclarations.main("src/test/resources/climbing.rdf", "/tmp/LUBM-ex-20-sig.owl" );
+	public void test() throws Exception {
+		OWLDeclarations.main("src/test/resources/climbing.rdf", "uploads/declarations_climbing.owl" );
 	}
 
 }

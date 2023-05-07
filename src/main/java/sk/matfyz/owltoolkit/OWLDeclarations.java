@@ -21,10 +21,10 @@ import static java.util.stream.Collectors.toSet;
 
 public class OWLDeclarations {
 
-    public static void main(String... args) throws OWLOntologyCreationException, OWLOntologyStorageException, FileNotFoundException {
+    public static void main(String... args) throws Exception {
 
         if (args.length != 2) {
-            System.err.println("Usage: owl-declarations input.owl output.owl");
+            System.err.println("Usage: owl-declarations input_file output_file");
             System.exit(0);
         }
 
