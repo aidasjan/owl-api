@@ -7,44 +7,33 @@ import sk.matfyz.owltoolkit.OWLConverter;
 @Service
 public class FileConvertService {
 	public String convertFile(String sourceFileName, String destinationFormat) {
-		// Convert file to another format
-		String destinationFileName = sourceFileName;
+		String destinationFileName = java.util.UUID.randomUUID().toString();
+		String destinationFilePath = "uploads/" + destinationFileName;
 		try {
-
-			String bareFileName = FilenameUtils.removeExtension(sourceFileName);
-
-
 			switch (destinationFormat) {
 				case "rdfxml":
-					destinationFileName = bareFileName+".rdf";
-					OWLConverter.main("-rdfxml", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
+					OWLConverter.main("-rdfxml", sourceFileName, destinationFilePath);
 					break;
 				case "owlxml":
-					destinationFileName = bareFileName+".owx";
-					OWLConverter.main("-owlxml", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
+					OWLConverter.main("-owlxml", sourceFileName, destinationFilePath);
 					break;
 				case "turtle":
-					destinationFileName = bareFileName+".ttl";
-					OWLConverter.main("-turtle", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
+					OWLConverter.main("-turtle", sourceFileName, destinationFilePath);
 					break;
 				case "manchester":
-					destinationFileName = bareFileName+".omn";
-					OWLConverter.main("-manchester", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
+					OWLConverter.main("-manchester", sourceFileName, destinationFilePath);
 					break;
 				case "fss":
-					destinationFileName = bareFileName+".ofn";
-					OWLConverter.main("-fss", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
+					OWLConverter.main("-fss", sourceFileName, destinationFilePath);
 					break;
 				case "latex":
-					destinationFileName = bareFileName+".tex";
-					OWLConverter.main("-latex", "uploads/"+sourceFileName, "uploads/"+destinationFileName);
+					OWLConverter.main("-latex", sourceFileName, destinationFilePath);
 					break;
 			}
 		} catch (Exception e) {
 			System.err.println("Exception occured during conversion.");
 		}
 
-		// Return converted file name
 		return destinationFileName;
 	}
 }
