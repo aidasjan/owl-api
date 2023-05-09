@@ -7,12 +7,13 @@ import sk.matfyz.owltoolkit.OWLDeclarations;
 @Service
 public class GetDeclarationsService {
 	public String getDeclarations(String sourceFileName) {
-		String destinationFileName = "declarations_"+sourceFileName;
+		String destinationFileName = java.util.UUID.randomUUID().toString();
+		String destinationFilePath = "uploads/" + destinationFileName;
+
 		try {
-			String bareFileName = FilenameUtils.removeExtension(sourceFileName);
-			OWLDeclarations.main("uploads/"+sourceFileName, "uploads/"+destinationFileName);
+			OWLDeclarations.main(sourceFileName, destinationFilePath);
 		} catch (Exception e) {
-			System.out.println("Exception occured while getting declarations.");
+			System.out.println("Exception occurred while getting declarations.");
 		}
 
 		return destinationFileName;

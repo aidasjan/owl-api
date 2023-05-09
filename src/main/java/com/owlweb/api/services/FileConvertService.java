@@ -9,6 +9,7 @@ public class FileConvertService {
 	public String convertFile(String sourceFileName, String destinationFormat) {
 		String destinationFileName = java.util.UUID.randomUUID().toString();
 		String destinationFilePath = "uploads/" + destinationFileName;
+
 		try {
 			switch (destinationFormat) {
 				case "rdfxml":

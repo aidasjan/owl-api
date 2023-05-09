@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,10 +58,42 @@ public class MainController {
             fileNames.add(sourceFileName);
         }
 
-        String convertedFileName = this.fileMergeService.mergeFiles(fileNames.toArray(new String[fileNames.size()]));
+        String resultFileName = this.fileMergeService.mergeFiles(fileNames.toArray(new String[fileNames.size()]));
 
-        Resource convertedFile = storageService.loadAsResource(convertedFileName);
+        Resource resultFile = storageService.loadAsResource(resultFileName);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + convertedFileName + "\"").body(convertedFile);
+                "attachment; filename=\"" + resultFileName + "\"").body(resultFile);
+    }
+
+    @PostMapping("/api/v1/individuals")
+    public ResponseEntity<Resource> individuals(@RequestParam("file") MultipartFile file) {
+        String sourceFileName = storageService.store(file);
+
+        String resultFileName = this.getIndividualsService.getIndividuals(sourceFileName);
+
+        Resource resultFile = storageService.loadAsResource(resultFileName);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + resultFileName + "\"").body(resultFile);
+    }
+
+    @PostMapping("/api/v1/declarations")
+    public ResponseEntity<Resource> declarations(@RequestParam("file") MultipartFile file) {
+        String sourceFileName = storageService.store(file);
+
+        String resultFileName = this.getDeclarationsService.getDeclarations(sourceFileName);
+
+        Resource resultFile = storageService.loadAsResource(resultFileName);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + resultFileName + "\"").body(resultFile);
+    }
+
+    @DeleteMapping("/api/v1/cleanup")
+    public ResponseEntity<String> cleanupFiles() {
+        try {
+            storageService.deleteAll();
+            return ResponseEntity.ok("Files cleaned up");
+        } catch (IOException exception) {
+            return ResponseEntity.internalServerError().body("Failed to cleanup");
+        }
     }
 }

@@ -9,6 +9,7 @@ public class FileMergeService {
 	public String mergeFiles(String[] sourceFileNames) {
 		String[] arguments = new String[sourceFileNames.length + 1];
 		String destinationFileName = java.util.UUID.randomUUID().toString();
+
 		arguments[0] = "uploads/" + destinationFileName;
 		for (int i=1; i<arguments.length; i++) arguments[i] = sourceFileNames[i-1];
 

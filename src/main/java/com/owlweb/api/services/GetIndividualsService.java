@@ -7,10 +7,11 @@ import sk.matfyz.owltoolkit.OWLIndividuals;
 @Service
 public class GetIndividualsService {
 	public String getIndividuals(String sourceFileName) {
-		String destinationFileName = "individuals_"+sourceFileName;
+		String destinationFileName = java.util.UUID.randomUUID().toString();
+		String destinationFilePath = "uploads/" + destinationFileName;
+
 		try {
-			String bareFileName = FilenameUtils.removeExtension(sourceFileName);
-			OWLIndividuals.main("uploads/"+sourceFileName, "uploads/"+destinationFileName);
+			OWLIndividuals.main(sourceFileName, destinationFilePath);
 		} catch (Exception e) {
 			System.err.println("Exception occured while getting individuals.");
 		}
