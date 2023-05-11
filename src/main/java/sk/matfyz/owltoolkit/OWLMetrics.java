@@ -22,7 +22,7 @@ public class OWLMetrics {
 
 
         if (args.length == 0) {
-            System.err.println("Usage: owl-metrics [-v] file.owl");
+            System.err.println("Usage: OWLMetrics [-v] file.owl");
             System.exit(0);
         }
 

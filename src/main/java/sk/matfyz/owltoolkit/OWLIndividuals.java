@@ -12,7 +12,7 @@ public class OWLIndividuals {
 
 	public static void main(String... args) throws Exception {
 		if (args.length != 2){
-			System.err.println("Usage: owl-individuals input_file output_file");
+			System.err.println("Usage: OWLIndividuals input_file output_file");
 			System.exit(0);
 		}
 		

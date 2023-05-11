@@ -21,7 +21,7 @@ public class OWLMerger {
 
 	public static void main(String... args) throws Exception {
 		if (args.length == 1) {
-			System.err.println("Usage: owl-merge merged_file file_1 ... file_n");
+			System.err.println("Usage: OWLMerger merged_file file_1 ... file_n");
 			System.exit(0);
 		}
 

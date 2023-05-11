@@ -23,7 +23,7 @@ public class OWLProfilization {
 	public static void main(String... args)
 			throws OWLOntologyCreationException, OWLOntologyStorageException {
 		if (args.length != 2){
-			printUsage();
+			System.err.println("Usage: OWLProfilization {-rl | -el | -ql} input_file");
 			System.exit(0);
 		}
 		
@@ -62,10 +62,6 @@ public class OWLProfilization {
 		manager.saveOntology(ontology, System.out);
 	}
 
-	private static void printUsage() {
-		System.err.println("Usage: \nowl-profilize {-rl | -el | -ql} file.owl");
-		
-	}
 }
 
 class OWLEquvilanceToSubsumptionsConverter implements OWLAxiomVisitor {

@@ -11,7 +11,7 @@ public class OWLDataProperties {
 
     public static void main(String... args) throws OWLOntologyCreationException {
         if (args.length != 1) {
-            System.err.println("Usage: owl-dataproperties input.owl");
+            System.err.println("Usage: OWLDataProperties input_file");
             System.exit(0);
         }
 

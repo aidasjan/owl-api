@@ -16,7 +16,7 @@ public class OWLImportsMaterialization {
     public static void main(String... args)
             throws OWLOntologyCreationException, OWLOntologyStorageException {
         if (args.length != 1) {
-            printUsage();
+			System.err.println("Usage: OWLImportsMaterialization input_file");
             System.exit(0);
         }
 
@@ -33,8 +33,5 @@ public class OWLImportsMaterialization {
         manager1.saveOntology(materializedOntology, System.out);
     }
 
-    private static void printUsage() {
-        System.err.println("Usage: owl-materialize-imports file.owl");
-    }
 }
 

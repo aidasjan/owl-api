@@ -24,7 +24,7 @@ public class OWLDeclarations {
     public static void main(String... args) throws Exception {
 
         if (args.length != 2) {
-            System.err.println("Usage: owl-declarations input_file output_file");
+            System.err.println("Usage: OWLDeclarations input_file output_file");
             System.exit(0);
         }
 

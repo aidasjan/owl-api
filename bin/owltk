@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+#echo "${@:3}"
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+if [ -n "${JAVA_HOME}" -a -x "${JAVA_HOME}/bin/java" ]; then
+	java="${JAVA_HOME}/bin/java"
+else
+	java=java
+fi
+
+
+case $1 in
+	'classes')
+		if [[ $# = 2 && -f $2 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLClasses "${@:2}"
+		else
+			echo "Usage: owltk classes input_file"
+		fi;;
+	'declarations')
+		if [[ $# = 3 && -f $2 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLDeclarations "${@:2}"
+		else
+			echo "Usage: owltk declarations input_file output_file"
+		fi;;
+	'dataproperties')
+		if [[ $# = 2 && -f $2 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLDataProperties "${@:2}"
+		else
+			echo "Usage: owltk dataproperties input_file"
+		fi;;
+	'individuals')
+		if [[ $# = 3 && -f $2 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLIndividuals "${@:2}"
+		else
+			echo "Usage: owltk individuals input_file output_file"
+		fi;;
+	'materialize-imports')
+		if [[ $# = 2 && -f $2 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLImportsMaterialization "${@:2}"
+		else
+			echo "Usage: owltk materialize-imports input_file"
+		fi;;
+	'merge')
+		if [[ $# = 1 ]]; then
+			echo "Usage: owltk merge output_file input_file [output_file]..."
+		else
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLMerger "${@:2}"
+		fi;;
+	'metrics')
+		if [[ ($# = 2 && -f $2) || ($# = 3 && -f $3) ]]; then
+			echo $#
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLMetrics "${@:2}"
+		else
+			echo "Usage: owltk metrics [-v] input_file"
+		fi;;
+	'objectproperties')
+		if [[ $# = 2 && -f $2 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLObjectProperties "${@:2}"
+		else
+			echo "Usage: owltk objectproperties input_file"
+		fi;;
+	'convert')
+		if [[ $# = 4 && -f $3 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLConverter "${@:2}"
+		else
+			echo "Usage: owltk convert {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file"
+		fi;;
+	'profilize')
+		if [[ $# = 3 && -f $3 ]]; then
+			${java} -cp "${DIR}/../target/*:${DIR}/../target/dependency/*" sk.matfyz.owltoolkit.OWLProfilization "${@:2}"
+		else
+			echo "Usage: owltk profilize {-rl | -el | -ql} input_file"
+		fi;;
+	*) echo -e 'Usage: owltk [classes | convert] [OPTIONS] file...\n
+	owltk classes input_file
+	owltk declarations input_file output_file
+	owltk dataproperties input_file
+	owltk individuals input_file output_file
+	owltk materialize-imports input_file
+	owltk merge output_file input_file [output_file]...
+	owltk metrics [-v] input_file
+	owltk objectproperties input_file
+	owltk convert {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file
+	owltk profilize {-rl | -el | -ql} input_file
+		';;
+esac

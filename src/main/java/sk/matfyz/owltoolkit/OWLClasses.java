@@ -14,7 +14,7 @@ public class OWLClasses {
     public static void main(String... args) throws OWLOntologyCreationException {
 
         if (args.length != 1) {
-            System.err.println("Usage: owl-classes input.owl");
+            System.err.println("Usage: OWLClasses input_file");
             System.exit(0);
         }
 
